@@ -1,5 +1,6 @@
 #include <iomanip>
 #include <iostream>
+#include <map>
 using namespace std;
 
 float func(float x, float dig[]){
@@ -101,9 +102,52 @@ void par(float a, float b, float n, float dig[]){
     << "h/3 * (fx0 + fxn + 2s1 + 4s2) = " << (h/3) * (presumm + 2*ds + 4*qs) << endl;
 }
 
+void gauss(float a, float b, float n, float dig[], float A[], float T[]){
+    float summ = 0;
+    int cf_g = 0;
+    for(int i = 1; i <= n; i++){
+        switch (int(n)) {
+            case 4:
+                if(i == 1) cf_g = 1;
+                if(i == 2) cf_g = 2;
+                if(i == 3) cf_g = 2;
+                if(i == 4) cf_g = 1;
+                break;
+            case 6:
+                if(i == 1) cf_g = 1;
+                if(i == 2) cf_g = 2;
+                if(i == 3) cf_g = 3;
+                if(i == 4) cf_g = 3;
+                if(i == 5) cf_g = 2;
+                if(i == 6) cf_g = 1;
+                break;
+            case 8:
+                if(i == 1) cf_g = 1;
+                if(i == 2) cf_g = 2;
+                if(i == 3) cf_g = 3;
+                if(i == 4) cf_g = 4;
+                if(i == 5) cf_g = 4;
+                if(i == 6) cf_g = 3;
+                if(i == 7) cf_g = 2;
+                if(i == 8) cf_g = 1;
+                break;
+                
+            default:
+                break;
+        }
+        cout << "f = " << func((b+a)/2 + (b-a)/2 * T[cf_g], dig) << " for i = " << i << " and cf_g = " << cf_g << "   ";
+        cout << "Ai = " << A[cf_g] << ", ti = " << A[cf_g] << endl;
+        summ += A[cf_g] * func((b+a)/2 + (b-a)/2 * T[cf_g], dig);
+    }
+}
+
 int main(int argc, const char * argv[]) {
     float n = 8, a = 1, b = 3;//н менять по заданию
     float dig[7] = {4,-18,-10,8,-3,-3,-1};//тут
+    
+    float gauss_A[9] = {0.347854,0.652145,0.171324,0.360761,0.467913,0.101228,0.222381,0.313706,0.362683};
+    float gauss_T[9] = {0.861136,0.339981,0.932464,0.661209,0.238619,0.960298,0.796666,0.525532,0.183434};
+    
     int mode;
     cin >> mode;
     switch (mode) {
@@ -123,6 +167,7 @@ int main(int argc, const char * argv[]) {
             par(a, b, n, dig);
             break;
         case 6:
+            gauss(a, b, n, dig, gauss_A, gauss_T);
             break;
         default:
             break;
