@@ -108,28 +108,28 @@ void gauss(float a, float b, float n, float dig[], float A[], float T[]){
     for(int i = 1; i <= n; i++){
         switch (int(n)) {
             case 4:
-                if(i == 1) cf_g = 1;
-                if(i == 2) cf_g = 2;
-                if(i == 3) cf_g = 2;
-                if(i == 4) cf_g = 1;
+                if(i == 1) cf_g = 1 -1;
+                if(i == 2) cf_g = 2 -1;
+                if(i == 3) cf_g = 2 -1;
+                if(i == 4) cf_g = 1 -1;
                 break;
             case 6:
-                if(i == 1) cf_g = 1;
-                if(i == 2) cf_g = 2;
-                if(i == 3) cf_g = 3;
-                if(i == 4) cf_g = 3;
-                if(i == 5) cf_g = 2;
-                if(i == 6) cf_g = 1;
+                if(i == 1) cf_g = 3 -1;
+                if(i == 2) cf_g = 4 -1;
+                if(i == 3) cf_g = 5 -1;
+                if(i == 4) cf_g = 5 -1;
+                if(i == 5) cf_g = 4 -1;
+                if(i == 6) cf_g = 3 -1;
                 break;
             case 8:
-                if(i == 1) cf_g = 1;
-                if(i == 2) cf_g = 2;
-                if(i == 3) cf_g = 3;
-                if(i == 4) cf_g = 4;
-                if(i == 5) cf_g = 4;
-                if(i == 6) cf_g = 3;
-                if(i == 7) cf_g = 2;
-                if(i == 8) cf_g = 1;
+                if(i == 1) cf_g = 6 -1;
+                if(i == 2) cf_g = 7 -1;
+                if(i == 3) cf_g = 8 -1;
+                if(i == 4) cf_g = 9 -1;
+                if(i == 5) cf_g = 9 -1;
+                if(i == 6) cf_g = 8 -1;
+                if(i == 7) cf_g = 7 -1;
+                if(i == 8) cf_g = 6 -1;
                 break;
                 
             default:
@@ -142,7 +142,7 @@ void gauss(float a, float b, float n, float dig[], float A[], float T[]){
 }
 
 int main(int argc, const char * argv[]) {
-    float n = 8, a = 1, b = 3;//н менять по заданию
+    float n = 4, a = 1, b = 3;//н менять по заданию
     float dig[7] = {4,-18,-10,8,-3,-3,-1};//тут
     
     float gauss_A[9] = {0.347854,0.652145,0.171324,0.360761,0.467913,0.101228,0.222381,0.313706,0.362683};
