@@ -72,6 +72,35 @@ void trap(float a, float b, float n, float dig[]){
     
 }
 
+void par(float a, float b, float n, float dig[]){
+    float h = (b-a)/n;
+    float res;
+    float xs[20];
+    float x = a;
+    float ds = 0, qs = 0;
+    for(int i = 0; i<=n; i++){
+        xs[i] = a + i*h;
+        
+    }
+    for(int i = 1; i <= (n/2)-1; i++){
+        res = func(xs[2*i], dig);
+        x = a + i*h;
+        cout << setprecision (6) << res << " for x" << i*2 << " = " << x << endl;
+        ds += res;
+    }
+    for(int i = 0; i <= (n/2)-1; i++){
+        res = func(xs[2*i + 1], dig);
+        x = a + i*h;
+        cout << setprecision (6) << res << " for x" << i*2 + 1 << " = " << x << endl;
+        qs += res;
+    }
+    cout << setprecision (8) << "x0 = " << func(xs[0], dig) << endl << "x" << n << " = " << func(xs[int(n)], dig) << endl;
+    float presumm = ( func(xs[0],dig) + func(xs[int(n)], dig) );
+    cout << "presumm(fx0 + fx1) = " << presumm << endl;
+    cout << setprecision (8) << "sum_chet = " << ds << endl << "sum_nechet = " << qs << endl
+    << "h/3 * (fx0 + fxn + 2s1 + 4s2) = " << (h/3) * (presumm + 2*ds + 4*qs) << endl;
+}
+
 int main(int argc, const char * argv[]) {
     float n = 8, a = 1, b = 3;//н менять по заданию
     float dig[7] = {4,-18,-10,8,-3,-3,-1};//тут
@@ -91,6 +120,7 @@ int main(int argc, const char * argv[]) {
             trap(a, b, n, dig);
             break;
         case 5:
+            par(a, b, n, dig);
             break;
         case 6:
             break;
@@ -99,4 +129,4 @@ int main(int argc, const char * argv[]) {
     }
     
 }
-//alksjdalkw
+
