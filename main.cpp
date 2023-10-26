@@ -39,10 +39,10 @@ void mid_r(float a, float b, float n, float dig[]){
     float x = a;
     float res;
     float xs[20];
-    for(int i = 0; i<=n; i++){
+    for(int i = 0; i <= n; i++){
         xs[i] = a + i*h;
     }
-    for(int i = 0; i <= n+1; i++){
+    for(int i = 0; i <= n-1; i++){
         x = a + i*h;
         res = func((xs[i]+xs[i+1])/2, dig);
         cout << setprecision (6) << res << " for x" << i << " = " << x << endl;
@@ -151,22 +151,47 @@ int main(int argc, const char * argv[]) {
     cin >> mode;
     switch (mode) {
         case 1:
-            left_r(a, b, n, dig);
+            for(int i = 0; i < 3; i++){
+                left_r(a, b, n, dig);
+                cout <<endl << "------------------" << endl;
+                n+=2;
+            }
             break;
         case 2:
-            rigth_r(a, b, n, dig);
+            for(int i = 0; i < 3; i++){
+                rigth_r(a, b, n, dig);
+                cout <<endl << "------------------" << endl;
+                n+=2;
+            }
             break;
         case 3:
-            mid_r(a, b, n, dig);
+            for(int i = 0; i < 3; i++){
+                mid_r(a, b, n, dig);
+                cout <<endl << "------------------" << endl;
+                n+=2;
+            }
             break;
         case 4:
-            trap(a, b, n, dig);
+            for(int i = 0; i < 3; i++){
+                trap(a, b, n, dig);
+                cout <<endl << "------------------" << endl;
+                n+=2;
+            }
             break;
         case 5:
-            par(a, b, n, dig);
+            for(int i = 0; i < 3; i++){
+                par(a, b, n, dig);
+                cout <<endl << "------------------" << endl;
+                n+=2;
+            }
             break;
         case 6:
-            gauss(a, b, n, dig, gauss_A, gauss_T);
+            for(int i = 0; i < 3; i++){
+                gauss(a, b, n, dig, gauss_A, gauss_T);
+                cout <<endl << "------------------" << endl;
+                n+=2;
+            }
+            
             break;
         default:
             break;
