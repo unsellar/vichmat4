@@ -96,7 +96,7 @@ void par(float a, float b, float n, float dig[]){
     }
     cout << setprecision (8) << "x0 = " << func(xs[0], dig) << endl << "x" << n << " = " << func(xs[int(n)], dig) << endl;
     float presumm = ( func(xs[0],dig) + func(xs[int(n)], dig) );
-    cout << "presumm(fx0 + fx1) = " << presumm << endl;
+    cout << "presumm(fx0 + fxn) = " << presumm << endl;
     cout << setprecision (8) << "sum_chet = " << ds << endl << "sum_nechet = " << qs << endl
     << "h/3 * (fx0 + fxn + 2s1 + 4s2) = " << (h/3) * (presumm + 2*ds + 4*qs) << endl;
 }
@@ -134,10 +134,12 @@ void gauss(float a, float b, float n, float dig[], float A[], float T[]){
             default:
                 break;
         }
-        cout << "f = " << func((b+a)/2 + (b-a)/2 * T[cf_g], dig) << " for i = " << i << " and cf_g = " << cf_g << "   ";
+        cout << "f = " << func((b+a)/2 + (b-a)/2 * T[cf_g], dig) << " for i = " << i << " and index = " << (b+a)/2 + (b-a)/2 * T[cf_g] << "   ";
         cout << "Ai = " << A[cf_g] << ", ti = " << A[cf_g] << endl;
         summ += A[cf_g] * func((b+a)/2 + (b-a)/2 * T[cf_g], dig);
     }
+    
+    cout << "summ = " << summ << endl << "res = " << ((b-a)/2) * summ;
 }
 
 int main(int argc, const char * argv[]) {
