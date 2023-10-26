@@ -42,7 +42,7 @@ void mid_r(float a, float b, float n, float dig[]){
     for(int i = 0; i<=n; i++){
         xs[i] = a + i*h;
     }
-    for(int i = 1; i <= n-1; i++){
+    for(int i = 0; i <= n+1; i++){
         x = a + i*h;
         res = func((xs[i]+xs[i+1])/2, dig);
         cout << setprecision (6) << res << " for x" << i << " = " << x << endl;
