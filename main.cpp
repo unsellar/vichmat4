@@ -98,7 +98,7 @@ void par(float a, float b, float n, float dig[]){
     float presumm = ( func(xs[0],dig) + func(xs[int(n)], dig) );
     cout << "presumm(fx0 + fxn) = " << presumm << endl;
     cout << setprecision (8) << "sum_chet = " << ds << endl << "sum_nechet = " << qs << endl
-    << "h/3 * (fx0 + fxn + 2s1 + 4s2) = " << (h/3) * (presumm + 2*ds + 4*qs) << endl;
+    << "h/3 * (fx0 + fxn + 2s1 + 4s2) = " << (h/3) * (presumm + (2*ds) + (4*qs)) << endl;
 }
 
 void gauss(float a, float b, float n, float dig[], float A[], float T[]){
@@ -134,18 +134,17 @@ void gauss(float a, float b, float n, float dig[], float A[], float T[]){
             default:
                 break;
         }
-        cout << "f = " << func((b+a)/2 + (b-a)/2 * T[cf_g], dig) << " for i = " << i << " and index = " << (b+a)/2 + (b-a)/2 * T[cf_g] << "   ";
-        cout << "Ai = " << A[cf_g] << ", ti = " << A[cf_g] << endl;
-        summ += A[cf_g] * func((b+a)/2 + (b-a)/2 * T[cf_g], dig);
+        cout << setprecision(8) << "f = " << func(((b+a)/2) + (((b-a)*T[cf_g])/2), dig) << " for i = " << i << " and index = " << ((b+a)/2) + (((b-a)*T[cf_g])/2) << "   ";
+        cout << "Ai = " << A[cf_g] << ", ti = " << T[cf_g] << endl;
+        summ += A[cf_g] * func(((b+a)/2) + (((b-a)*T[cf_g])/2), dig);
     }
     
-    cout << "summ = " << summ << endl << "res = " << ((b-a)/2) * summ;
+    cout << "summ = res = " << summ;
 }
 
 int main(int argc, const char * argv[]) {
     float n = 4, a = 1, b = 3;//н менять по заданию
     float dig[7] = {4,-18,-10,8,-3,-3,-1};//тут
-    
     float gauss_A[9] = {0.347854,0.652145,0.171324,0.360761,0.467913,0.101228,0.222381,0.313706,0.362683};
     float gauss_T[9] = {0.861136,0.339981,0.932464,0.661209,0.238619,0.960298,0.796666,0.525532,0.183434};
     
