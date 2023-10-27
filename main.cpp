@@ -141,7 +141,7 @@ void gauss(float a, float b, float n, float dig[], float A[], float T[]){
         summ += A[cf_g] * func(((b+a)/2) + (((b-a)*T[cf_g]*cf_ti)/2), dig);
     }
     
-    cout << "summ = res = " << summ;
+    cout << "summ = res = " << ((b-a)/2) *summ;
 }
 
 int main(int argc, const char * argv[]) {
