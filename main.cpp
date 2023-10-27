@@ -137,7 +137,7 @@ void gauss(float a, float b, float n, float dig[], float A[], float T[]){
         if(i <= n/2) cf_ti = -1;
         else cf_ti = 1;
         cout << setprecision(8) << "f = " << func(((b+a)/2) + (((b-a)*T[cf_g]*cf_ti)/2), dig) << " for i = " << i << " and index = " << ((b+a)/2) + (((b-a)*T[cf_g]*cf_ti)/2) << " cf_ti = " << cf_ti << "   ";
-        cout << "Ai = " << A[cf_g] << ", ti = " << T[cf_g] << endl;
+        cout << "Ai = " << A[cf_g] << ", ti = " << T[cf_g]*cf_ti << endl;
         summ += A[cf_g] * func(((b+a)/2) + (((b-a)*T[cf_g]*cf_ti)/2), dig);
     }
     
