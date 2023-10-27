@@ -103,7 +103,7 @@ void par(float a, float b, float n, float dig[]){
 
 void gauss(float a, float b, float n, float dig[], float A[], float T[]){
     float summ = 0;
-    int cf_g = 0;
+    int cf_g = 0, cf_ti = 1;
     for(int i = 1; i <= n; i++){
         switch (int(n)) {
             case 4:
@@ -134,9 +134,11 @@ void gauss(float a, float b, float n, float dig[], float A[], float T[]){
             default:
                 break;
         }
-        cout << setprecision(8) << "f = " << func(((b+a)/2) + (((b-a)*T[cf_g])/2), dig) << " for i = " << i << " and index = " << ((b+a)/2) + (((b-a)*T[cf_g])/2) << "   ";
+        if(i <= n/2) cf_ti = -1;
+        else cf_ti = 1;
+        cout << setprecision(8) << "f = " << func(((b+a)/2) + (((b-a)*T[cf_g]*cf_ti)/2), dig) << " for i = " << i << " and index = " << ((b+a)/2) + (((b-a)*T[cf_g]*cf_ti)/2) << " cf_ti = " << cf_ti << "   ";
         cout << "Ai = " << A[cf_g] << ", ti = " << T[cf_g] << endl;
-        summ += A[cf_g] * func(((b+a)/2) + (((b-a)*T[cf_g])/2), dig);
+        summ += A[cf_g] * func(((b+a)/2) + (((b-a)*T[cf_g]*cf_ti)/2), dig);
     }
     
     cout << "summ = res = " << summ;
